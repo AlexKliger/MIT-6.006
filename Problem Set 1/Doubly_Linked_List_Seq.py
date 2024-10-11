@@ -83,11 +83,19 @@ class Doubly_Linked_List_Seq:
         return x.item
 
     def delete_last(self):
-        x = None
-        ###########################
-        # Part (a): Implement me! #
-        ###########################
-        return x
+        # Extract list's old tail
+        x = self.tail
+        # Link list's tail pointer to old tail's prev pointer
+        self.tail = x.prev
+        # If old tail's prev value is None, then the list only had a length of 1
+        if self.tail == None:
+            # Set list's head pointer to None too
+            self.head = None
+        else:
+            # ELse set new tail's next pointer to None
+            self.tail.next = None
+
+        return x.item
 
     def remove(self, x1, x2):
         L2 = Doubly_Linked_List_Seq()
