@@ -68,11 +68,19 @@ class Doubly_Linked_List_Seq:
         self.tail = new_tail
 
     def delete_first(self):
-        x = None
-        ###########################
-        # Part (a): Implement me! #
-        ###########################
-        return x
+        # Extract list's old head
+        x = self.head
+        # Link list's head pointer to old head's next pointer
+        self.head = x.next
+        # If new head points to None, the list only had a length of 1
+        if self.head == None:
+            # Set list's tail to None too
+            self.tail = None
+        else:
+            # Set new head's prev pointer to None
+            self.head.prev = None
+
+        return x.item
 
     def delete_last(self):
         x = None
