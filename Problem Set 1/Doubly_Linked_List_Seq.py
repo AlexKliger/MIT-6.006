@@ -52,10 +52,20 @@ class Doubly_Linked_List_Seq:
         self.head = new_head
 
     def insert_last(self, x):
-        ###########################
-        # Part (a): Implement me! #
-        ###########################
-        pass
+        # Construct a new doubly linked list node storing x
+        new_tail = Doubly_Linked_List_Node(x)
+        # If no tail exists, then the list is empty
+        if self.tail == None:
+            # Link head and tail pointers
+            self.head = new_tail
+            self.tail = new_tail
+            return
+        # Link new tail's prev pointer to old tail
+        new_tail.prev = self.tail
+        # Link old tail's next pointer to new tail
+        self.tail.next = new_tail
+        # Link list's tail node to new tail
+        self.tail = new_tail
 
     def delete_first(self):
         x = None
