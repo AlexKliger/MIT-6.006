@@ -99,9 +99,26 @@ class Doubly_Linked_List_Seq:
 
     def remove(self, x1, x2):
         L2 = Doubly_Linked_List_Seq()
-        ###########################
-        # Part (b): Implement me! # 
-        ###########################
+        L2.head = x1
+        L2.tail = x2
+        
+        # If the prev pointer of x1 is None, then it is the head
+        if x1.prev == None:
+            # Set the list's head to the node after x2
+            self.head = x2.next
+        else:
+            x1.prev.next = x2.next
+
+        # If the next pointer of x2 is None, then x2 is the tail
+        if x2.next == None:
+            # Set the list's tail pointer to the node before x1
+            self.tail = x1.prev
+        else:
+            x2.next.prev = x1.prev
+
+        x1.prev = None
+        x2.next = None
+        
         return L2
 
     def splice(self, x, L2):
