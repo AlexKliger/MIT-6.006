@@ -122,7 +122,23 @@ class Doubly_Linked_List_Seq:
         return L2
 
     def splice(self, x, L2):
-        ###########################
-        # Part (c): Implement me! # 
-        ###########################
-        pass
+        # Extract references to the tail of L2, head of L2, and the node after x
+        x1 = L2.head
+        x2 = L2.tail
+        x3 = x.next
+        # Link prev pointer of L2's head to x
+        x1.prev = x
+        # Link x's next pointer to the head of L2
+        x.next = x1
+        # Link next pointer of L2's tail to node after x
+        x2.next = x3
+        # If node after x is None, then x was the tail
+        if x3 == None:
+            # Set head of L1 to tail of L2
+            self.tail = x2
+        else:
+            # Else, set prev pointer of node after x to tail of L2
+            x3.prev = x2
+
+        L2.head = None
+        L2.tail = None
